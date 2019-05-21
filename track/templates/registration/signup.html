@@ -1,0 +1,23 @@
+{% load static %}
+<link rel = "stylesheet" type = "text/css" href = "{% static 'track/style.css' %}"/>
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset="UTF-8">
+	<title> SignUP </title>
+<style>
+	#pagespace
+{
+padding-top: 20px;
+align:center;
+padding-bottom: 50px;
+background-color: #C8E1C2; 
+} 
+</style>
+</head>
+<body>
+	<div class="container-fluid" id="pagespace">
+		<center><h1><u> Track Expenses </u></h1></center>
+		If Already Registered? 
+			Click here to <a href="{% url 'login' %}"> Log-in </a>
+	<div class="container" id="signup">

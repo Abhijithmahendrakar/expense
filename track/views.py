@@ -26,3 +26,21 @@ def signup(request):
     else:
         form = SignUpForm()               #IF not logged in then Show empty form
     return render(request, 'registration/signup.html', {'form': form})
+
+def add_item(request):                      # Add all expenses items
+    k=Item.objects.aggregate(Sum('price'))   # gets total sum of expenses
+    l=json.dumps(k)                          # converts into json string
+    p=re.findall("\d+",l)                    #Retrives numerical part from returned string
+    item = Item.objects.all()
+    if request.method == "POST":
+        form = ItemModelForm(request.POST,request.FILES)  #request.FILES contains uploaded files
+        if form.is_valid():
+            # commit=False means the form doesn't save at this time.
+            # commit defaults to True which means it normally saves.
+            model_instance = form.save(commit=False)
+            model_instance.save()
+            form = ItemModelForm()
+            return HttpResponseRedirect('/item') #redirects to same page after POST
+    else:
+        form = ItemModelForm()
+    return render(request, "track/index.html", {'form': form ,'item':item,'sum':p })

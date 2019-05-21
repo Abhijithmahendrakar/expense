@@ -28,10 +28,10 @@ def signup(request):
     return render(request, 'registration/signup.html', {'form': form})
 
 def add_item(request):                      # Add all expenses items
-    k=Item.objects.aggregate(Sum('price'))   # gets total sum of expenses
+    k=NewItem.objects.aggregate(Sum('price'))   # gets total sum of expenses
     l=json.dumps(k)                          # converts into json string
     p=re.findall("\d+",l)                    #Retrives numerical part from returned string
-    item = Item.objects.all()
+    item = NewItem.objects.all()
     if request.method == "POST":
         form = ItemModelForm(request.POST,request.FILES)  #request.FILES contains uploaded files
         if form.is_valid():
@@ -44,3 +44,10 @@ def add_item(request):                      # Add all expenses items
     else:
         form = ItemModelForm()
     return render(request, "track/index.html", {'form': form ,'item':item,'sum':p })
+
+def display(request):                                     #displaying all items
+    k = NewItem.objects.aggregate(Sum('price'))
+    l = json.dumps(k)
+    p = re.findall("\d+", l)
+    item = NewItem.objects.all()
+    return render(request,"tracker/table.html",{'items':item ,'sum':p})

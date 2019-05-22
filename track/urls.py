@@ -8,4 +8,9 @@ urlpatterns=[
     path('signup/',views.signup,name="signup"), 
     # URL for Adding items
     path('item/',views.add_item,name="items"),  
+    # URL for displaying
+    path('display/',views.display,name="display"),
+    # URL for deleting
+    path('<int:id>/', views.delete, name='delete'), 
+ 
 ]

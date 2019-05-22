@@ -13,8 +13,8 @@ class NewItemModelForm(forms.ModelForm):
 #ThisForm is for the User Registration
 class SignUpForm(UserCreationForm):
 		email = forms.EmailField(max_length = 254, help_text = 'Enter a valid Email address.')
-		password = forms.CharField(widget = forms.PasswordInput, help_text = 'MIN 8 chars,should include special char,alpha-numeric char')
+		password1 = forms.CharField(widget = forms.PasswordInput, help_text = 'MIN 8 chars,should include special char,alpha-numeric char')
 
 		class Meta:
 			model = User
-			fields = ('Username', 'Email', 'Password', 'Password1')	
+			fields = ('username', 'email', 'password1', 'password2')	

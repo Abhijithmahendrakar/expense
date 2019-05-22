@@ -33,13 +33,13 @@ def add_item(request):                      # Add all expenses items
     p=re.findall("\d+",l)                    #Retrives numerical part from returned string
     item = NewItem.objects.all()
     if request.method == "POST":
-        form = ItemModelForm(request.POST,request.FILES)  #request.FILES contains uploaded files
+        form = NewItemModelForm(request.POST,request.FILES)  #request.FILES contains uploaded files
         if form.is_valid():
             # commit=False means the form doesn't save at this time.
             # commit defaults to True which means it normally saves.
             model_instance = form.save(commit=False)
             model_instance.save()
-            form = ItemModelForm()
+            form = NewItemModelForm()
             return HttpResponseRedirect('/item') #redirects to same page after POST
     else:
         form = NewItemModelForm()

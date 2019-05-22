@@ -16,7 +16,10 @@ urlpatterns=[
     path('sortname/',views.sortbyname,name="sname"), 
     # URL for sorting by price page
     path('sortprice/',views.sortbyprice,name="sprice"),
-
+    # URL for sorting by date page
+    path('sortdate/',views.sortbydate,name="sdate"),
+    # URL for editing page
+    path('<int:id>/edit/',views.update,name="update"),
  
  
 ]

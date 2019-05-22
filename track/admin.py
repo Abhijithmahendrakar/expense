@@ -1,3 +1,5 @@
 from django.contrib import admin
+from . models import NewItem
 
-# Register your models here.
+#registering the model
+admin.site.register(NewItem) 

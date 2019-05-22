@@ -10,7 +10,7 @@ class NewItem(models.Model):
 	#item image field
 	image = models.FileField(blank = True, null = True)
 	#Created_time
-	Created_at = models.DateTimeField(auto_now_add = True)
+	created_at = models.DateTimeField(auto_now_add = True)
 
 	def __str__(self):
 		return self.name

@@ -2,10 +2,10 @@ from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect,reverse
 from django.http import HttpResponse,HttpResponseRedirect
-from . forms import NewItemModelForm
+from .forms import NewItemModelForm
 from . models import NewItem
 from django.db.models import Sum
-from django.contrib.auth import autenticate,login
+from django.contrib.auth import authenticate,login
 from .forms import SignUpForm
 import re,json
 
@@ -18,7 +18,7 @@ def signup(request):
         if form.is_valid():                
             form.save()
             username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password')
+            raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             #User is logged in
             login(request, user)          

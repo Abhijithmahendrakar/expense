@@ -7,3 +7,29 @@
     <title>Update</title>
 </head>
 <body>
+
+<!-- Form for updating the items --->
+<div class="container" id="signup" >
+<form method="POST" action="" enctype="multipart/form-data" >
+    <h2>Update Item</h2>
+{% csrf_token %}
+    {% for field in form %}
+      <p>
+        {{ field.label_tag }}<br>
+        {{ field }}
+        {% if field.help_text %}
+          <small style="color: grey">{{ field.help_text }}</small>
+        {% endif %}
+
+      </p>
+    {% endfor %}
+    <button class="button button1" type="submit">Update</button>
+</form>
+    <!-- end of form --->
+
+ <form action="{% url 'track:display'%}">
+    <button class="button button2" type="submit">Display</button>
+</form>
+</div>
+</body>
+</html>

@@ -82,3 +82,8 @@ def sortbyname(request):
 def sortbyprice(request):                                 
     sprice=NewItem.objects.order_by('price').all()
     return render(request,"track/sprice.html",{'price':sprice})
+
+#sorting by date
+def sortbydate(request):                                    
+    sdate=NewItem.objects.order_by('created_at').all()
+    return render(request,"track/sdate.html",{'date':sdate})

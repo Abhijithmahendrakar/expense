@@ -22,6 +22,7 @@ urlpatterns=[
     path('<int:id>/edit/',views.update,name="update"),
     # URL for Login
     path('accounts/', include('django.contrib.auth.urls'),name="login"),
- 
- 
+   	# URL for Logout
+ 	path('accounts/logout', include('django.contrib.auth.urls'), name="logout"),
 ]
+ 

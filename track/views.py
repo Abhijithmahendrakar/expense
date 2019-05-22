@@ -70,10 +70,15 @@ def update(request,id):
 
 #deleting items by primary key on click    
 def delete(request,id):                                    
-    deleteitem=get_object_or_404(Item,pk=id).delete()
+    deleteitem=get_object_or_404(NewItem,pk=id).delete()
     return HttpResponseRedirect('/display')
 
 #sorting by name
 def sortbyname(request):                                  
     sname=NewItem.objects.order_by('name').all()
     return render(request,"track/sname.html",{'name':sname})
+
+#sorting by price    
+def sortbyprice(request):                                 
+    sprice=NewItem.objects.order_by('price').all()
+    return render(request,"track/sprice.html",{'price':sprice})

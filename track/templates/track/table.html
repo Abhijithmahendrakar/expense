@@ -38,3 +38,20 @@
 </table>
 <!-- table with elements in a loop --->
 <p>The total sum is {{sum}}</p>
+
+<!-- All filters --->
+<form action="{% url 'track:items'%}">
+    <button type="submit" class="button button1" >Add Items</button>
+</form>
+<form action="{% url 'track:sprice'%}">
+    <button class="button button5">Sort by price</button>
+</form>
+ <form action="{% url 'track:sname'%}">
+    <button class="button button5">Sort by name</button>
+</form>
+ <form action="{% url 'track:sdate'%}">
+     <button class="button button5">Sort by Date</button>
+ </form>
+<!-- end filters --->
+</body>
+</html>

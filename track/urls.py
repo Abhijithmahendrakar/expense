@@ -20,6 +20,8 @@ urlpatterns=[
     path('sortdate/',views.sortbydate,name="sdate"),
     # URL for editing page
     path('<int:id>/edit/',views.update,name="update"),
+    # URL for Login
+    path('accounts/', include('django.contrib.auth.urls'),name="login"),
  
  
 ]

@@ -45,9 +45,25 @@ def add_item(request):                      # Add all expenses items
         form = ItemModelForm()
     return render(request, "track/index.html", {'form': form ,'item':item,'sum':p })
 
-def display(request):                                     #displaying all items
+#displaying all items
+def display(request):                                     
     k = NewItem.objects.aggregate(Sum('price'))
     l = json.dumps(k)
     p = re.findall("\d+", l)
     item = NewItem.objects.all()
-    return render(request,"tracker/table.html",{'items':item ,'sum':p})
+    return render(request,"track/table.html",{'items':item ,'sum':p})
+
+# Editing submitted data
+def update(request,id):                       
+    instance = get_object_or_404(NewItem,id=id)
+    form = NewItemModelForm(data=request.POST, files=request.FILES, instance=instance) #posted files will be in request.FILES
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+    context={
+        "name":instance.name,
+        "price":instance.price,
+        "instance":instance,
+        "form":form,
+    }
+    return render(request,"track/update.html",context)

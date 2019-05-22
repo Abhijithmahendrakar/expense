@@ -42,7 +42,7 @@ def add_item(request):                      # Add all expenses items
             form = ItemModelForm()
             return HttpResponseRedirect('/item') #redirects to same page after POST
     else:
-        form = ItemModelForm()
+        form = NewItemModelForm()
     return render(request, "track/index.html", {'form': form ,'item':item,'sum':p })
 
 #displaying all items
@@ -67,3 +67,8 @@ def update(request,id):
         "form":form,
     }
     return render(request,"track/update.html",context)
+
+#deleting items by primary key on click    
+def delete(request,id):                                    
+    deleteitem=get_object_or_404(Item,pk=id).delete()
+    return HttpResponseRedirect('/display')

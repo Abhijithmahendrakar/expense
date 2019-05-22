@@ -11,6 +11,12 @@ urlpatterns=[
     # URL for displaying
     path('display/',views.display,name="display"),
     # URL for deleting
-    path('<int:id>/', views.delete, name='delete'), 
+    path('<int:id>/', views.delete, name='delete'),
+    # URL for sorting by name page
+    path('sortname/',views.sortbyname,name="sname"), 
+    # URL for sorting by price page
+    path('sortprice/',views.sortbyprice,name="sprice"),
+
+ 
  
 ]

@@ -25,4 +25,19 @@
 {% else %}
 <h2>you didn't log in </h2>
 {% endif %}
-<!--   end of authentication -->	
+<!--   end of authentication -->
+
+<hr>
+<!--  Form for adding elements -->
+<div class="container" id="login">
+<form method="POST" action=" " enctype="multipart/form-data" >
+<h1>Add Item</h1>
+{% csrf_token %}
+{{form.as_p}}
+<button class="button button1" type="submit">Add Item</button>
+</form>
+<form action="{% url 'track:display'%}">
+    <button class="button button2" type="submit">Display</button>
+</form>
+</div>
+<!--  end of form -->	

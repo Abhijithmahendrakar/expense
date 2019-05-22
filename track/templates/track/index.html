@@ -41,3 +41,21 @@
 </form>
 </div>
 <!--  end of form -->	
+
+<!--  All filters-------------------------- -->
+<hr>
+<h2>Filters</h2>
+ <form action="{% url 'track:sname'%}">
+    <button class="button button5">Sort by name</button>
+</form>
+<form action="{% url 'track:sprice'%}">
+    <button class="button button5">Sort by price</button>
+</form>
+<form action="{% url 'track:sdate'%}">
+    <button class="button button5">Sort by date</button>
+</form>
+</center>
+<!--  End of filter buttons------------------ -->
+</div>
+</body>
+</html>

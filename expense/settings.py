@@ -19,10 +19,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'up$ke&#!v%wt6(o!q#npyr@ps8eq=bn-3xax&a@sj+@$pbqw6e'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
+SECRET_KEY = config('up$ke&#!v%wt6(o!q#npyr@ps8eq=bn-3xax&a@sj+@$pbqw6e')
+DEBUG = config('DEBUG', default=False, cast=bool)
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
+
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'testserver']
 

@@ -59,14 +59,14 @@ class UserFormTest(TestCase):
 	#testing validation
     def test_valid_form(self):     
         w = NewItem.objects.create(name='bike', price=10000)
-        data = {'username':"abhijithms ", 'email':"abhijithms@gmail.com ",'password1':"qazxwscv ",'password2':"qazxwscv "}
+        data = {'username':"abhijithms", 'email':"abhijithms@gmail.com",'password1':"qaz12xwscv",'password2':"qaz12xwscv"}
         form = SignUpForm(data=data)
         self.assertTrue(form.is_valid())
 
     #invalid form testing using false details    
     def test_invalid_form(self):   
         w = NewItem.objects.create(name='bike', price=10000)
-        data = {'username': "abhijithms ", 'email': "abhijithms@gmail.com ", 'password1': "qazxwsc ", 'password2': "qazxwscv "}
+        data = {'username': "abhijithms", 'email': "abhijithms@gmail.com", 'password1': "qaz11xwsc", 'password2': "qaz11xwscv"}
         form = SignUpForm(data=data)
         self.assertFalse(form.is_valid())
 
@@ -87,9 +87,9 @@ class NewItemModelFormTest(TestCase):
 
 #change the values of usename , password, email everytime you test here and in line no: 140 
 class EndtoEndTest(LiveServerTestCase): #End to End testing using Selenium
-    username = "harsha"                   #sample name
-    email = "harsha@gmail.com"            #email
-    password = "simple1234"             #and password
+    username = "newtest123"                   #sample name
+    email = "newtest123@gmail.com"            #email
+    password = "123new567test"             #and password
 
     driver = webdriver.Chrome('C:\\Users\\abhi\\Desktop\\proj\\chromedriver') #load chrome driver from local system
 
@@ -115,7 +115,7 @@ class EndtoEndTest(LiveServerTestCase): #End to End testing using Selenium
     elem.send_keys("television")
     elem = driver.find_element_by_id("id_price")
     elem.send_keys(1000)
-    driver.find_element_by_id("id_image").send_keys(os.getcwd() + "/download.jpg") #give path to image from root during testing
+    driver.find_element_by_id("id_image").send_keys(os.getcwd() + "/tv.png") #give path to image from root during testing
     time.sleep(1)
     elem.send_keys(Keys.RETURN)
     time.sleep(2)
@@ -123,7 +123,7 @@ class EndtoEndTest(LiveServerTestCase): #End to End testing using Selenium
     elem.send_keys("television")
     elem = driver.find_element_by_id("id_price")
     elem.send_keys(1000)
-    driver.find_element_by_id("id_image").send_keys(os.getcwd() + "/download.jpg") #give path to image from root during testing
+    driver.find_element_by_id("id_image").send_keys(os.getcwd() + "/tv.png") #give path to image from root during testing
     time.sleep(1)
     elem.send_keys(Keys.RETURN)
     time.sleep(2)
@@ -131,7 +131,7 @@ class EndtoEndTest(LiveServerTestCase): #End to End testing using Selenium
     elem.send_keys("television")
     elem = driver.find_element_by_id("id_price")
     elem.send_keys(1000)
-    driver.find_element_by_id("id_image").send_keys(os.getcwd() + "/download.jpg") #give path to image from root during testing
+    driver.find_element_by_id("id_image").send_keys(os.getcwd() + "/tv.png") #give path to image from root during testing
     time.sleep(1)
     elem.send_keys(Keys.RETURN)
     time.sleep(2)

@@ -48,3 +48,39 @@ class NewItemViewTests(TestCase):
         response = p.post('http://127.0.0.1:8000/accounts/logout/')
         response = p.get('/accounts/logout', follow=True)
         self.assertEqual(response.status_code, 200)
+
+#testing models by creating an instance
+class NewItemModelTest(TestCase):    
+    def create_item(self,name="television",price=1200):
+        return NewItem.objects.create(name=name,price=price,created_at=timezone.now())
+
+#Testing forms both Userform
+class UserFormTest(TestCase):      
+	#testing validation
+    def test_valid_form(self):     
+        w = NewItem.objects.create(name='bike', price=10000)
+        data = {'username':" ", 'email':" ",'password1':" ",'password2':" "}
+        form = SignUpForm(data=data)
+        self.assertTrue(form.is_valid())
+
+    #invalid form testing using false details    
+    def test_invalid_form(self):   
+        w = NewItem.objects.create(name='bike', price=10000)
+        data = {'username': " ", 'email': " ", 'password1': " ", 'password2': " "}
+        form = SignUpForm(data=data)
+        self.assertFalse(form.is_valid())
+
+#testing Item form
+class NewItemModelFormTest(TestCase):  
+
+    def test_valid_form(self):
+        w = NewItem.objects.create(name='bike', price=10000,image='images/bicycle.png')
+        data = {'name':"Bike",'price':10000}
+        form = NewItemModelForm(data=data)
+        self.assertTrue(form.is_valid())
+
+    def test_invalid_form(self):
+        w = NewItem.objects.create(name='bike', price=10000)
+        data = {'name': "Bike",}
+        form = NewItemModelForm(data=data)
+        self.assertFalse(form.is_valid())

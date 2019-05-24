@@ -26,7 +26,7 @@ DEBUG = True
 
 
 
-ALLOWED_HOSTS = ['myexptrack.herokuapp.com']
+ALLOWED_HOSTS = ['webexptrack.herokuapp.com']
 
 # Use nose to run all tests
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

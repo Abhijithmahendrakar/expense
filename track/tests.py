@@ -87,9 +87,9 @@ class NewItemModelFormTest(TestCase):
 
 #change the values of usename , password, email everytime you test here and in line no: 140 
 class EndtoEndTest(LiveServerTestCase): #End to End testing using Selenium
-    username = "newtest123"                   #sample name
-    email = "newtest123@gmail.com"            #email
-    password = "123new567test"             #and password
+    username = "newramesh"                   #sample name
+    email = "ramesh@gmail.com"            #email
+    password = "sriram123"             #and password
 
     driver = webdriver.Chrome('C:\\Users\\abhi\\Desktop\\proj\\chromedriver') #load chrome driver from local system
 
